@@ -7,5 +7,6 @@
   <ItemGroup>
     <Folder Include="Processor\" />
     <Folder Include="Domain\" />
+    <Folder Include="DataInterface\" />
   </ItemGroup>
 </Project>
