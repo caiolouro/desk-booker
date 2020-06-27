@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DeskBooker.Core.DataInterface;
 using DeskBooker.Core.Domain;
 using Moq;
@@ -26,7 +27,7 @@ namespace DeskBooker.Core.Processor
                 Date = new DateTime(2020, 06, 23)
             };
 
-            _availableDesks = new List<Desk> { new Desk() };
+            _availableDesks = new List<Desk> { new Desk() { Id = 1 } };
 
             _deskBookingRepositoryMock = new Mock<IDeskBookingRepository>();
 
@@ -74,7 +75,7 @@ namespace DeskBooker.Core.Processor
                 .Setup(repository => repository.Save(It.IsAny<DeskBooking>())) // When Save method is called with a DeskBooking object parameter
                 .Callback<DeskBooking>(savedDeskBooking => deskBooking = savedDeskBooking);
 
-            _processor.BookDesk(_request); // This processor instance was injected with the mocked repository instance that as setup above
+            _processor.BookDesk(_request); // This processor instance was injected with the mocked repository instance that was setup above
 
             _deskBookingRepositoryMock.Verify(repository => repository.Save(It.IsAny<DeskBooking>()), Times.Once); // Check method was called only once
 
@@ -83,6 +84,7 @@ namespace DeskBooker.Core.Processor
             Assert.Equal(_request.LastName, deskBooking.LastName);
             Assert.Equal(_request.Email, deskBooking.Email);
             Assert.Equal(_request.Date, deskBooking.Date);
+            Assert.Equal(_availableDesks.First().Id, deskBooking.DeskId);
         }
 
         [Fact]
@@ -94,6 +96,38 @@ namespace DeskBooker.Core.Processor
             _processor.BookDesk(_request);
 
             _deskBookingRepositoryMock.Verify(repository => repository.Save(It.IsAny<DeskBooking>()), Times.Never);
+        }
+
+        // To use data driven tests, that has different behaviours depending on the input, use the Theory annotation insted of the Fact
+        [Theory]
+        [InlineData(DeskBookingResultCode.Success, true)]
+        [InlineData(DeskBookingResultCode.NoDesksAvailable, false)]
+        public void ShouldReturnCorrectResultCode(DeskBookingResultCode correctDeskBookingResultCode, bool isDesksAvailable)
+        {
+            if (!isDesksAvailable) _availableDesks.Clear();
+
+            var deskBookingResult = _processor.BookDesk(_request);
+            Assert.Equal(correctDeskBookingResultCode, deskBookingResult.Code);
+        }
+
+        [Theory]
+        [InlineData(2, true)]
+        [InlineData(null, false)]
+        public void ShouldReturnCorrectDeskBookingId(int? correctDeskBookingId, bool isDesksAvailable)
+        {
+            if (!isDesksAvailable)
+            {
+                _availableDesks.Clear();
+            }
+            else
+            {
+                _deskBookingRepositoryMock
+                    .Setup(repository => repository.Save(It.IsAny<DeskBooking>()))
+                    .Callback<DeskBooking>(savedDeskBooking => savedDeskBooking.Id = correctDeskBookingId);
+            }
+
+            var deskBookingResult = _processor.BookDesk(_request);
+            Assert.Equal(correctDeskBookingId, deskBookingResult.DeskBookingId);
         }
     }
 }
