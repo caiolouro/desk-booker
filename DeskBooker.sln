@@ -5,6 +5,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.Core.Tests", "De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.Core", "DeskBooker.Core\DeskBooker.Core.csproj", "{F2AB7988-01F1-4D87-9071-446ED9D67D42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.DataAccess", "DeskBooker.DataAccess\DeskBooker.DataAccess.csproj", "{431DBF76-6900-49A5-A678-86331E2F4E14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.DataAccess.Tests", "DeskBooker.DataAccess.Tests\DeskBooker.DataAccess.Tests.csproj", "{F3323929-9346-49DA-9620-0D17F571F274}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.Web", "DeskBooker.Web\DeskBooker.Web.csproj", "{F03B19D8-2A19-4C6C-BED2-961480CE2EE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.Web.Tests", "DeskBooker.Web.Tests\DeskBooker.Web.Tests.csproj", "{F4CB880E-C1EF-4CCA-82AE-83A36624140E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +27,21 @@ Global
 		{F2AB7988-01F1-4D87-9071-446ED9D67D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2AB7988-01F1-4D87-9071-446ED9D67D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2AB7988-01F1-4D87-9071-446ED9D67D42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{431DBF76-6900-49A5-A678-86331E2F4E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{431DBF76-6900-49A5-A678-86331E2F4E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{431DBF76-6900-49A5-A678-86331E2F4E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{431DBF76-6900-49A5-A678-86331E2F4E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3323929-9346-49DA-9620-0D17F571F274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3323929-9346-49DA-9620-0D17F571F274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3323929-9346-49DA-9620-0D17F571F274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3323929-9346-49DA-9620-0D17F571F274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F03B19D8-2A19-4C6C-BED2-961480CE2EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F03B19D8-2A19-4C6C-BED2-961480CE2EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F03B19D8-2A19-4C6C-BED2-961480CE2EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F03B19D8-2A19-4C6C-BED2-961480CE2EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4CB880E-C1EF-4CCA-82AE-83A36624140E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4CB880E-C1EF-4CCA-82AE-83A36624140E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4CB880E-C1EF-4CCA-82AE-83A36624140E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4CB880E-C1EF-4CCA-82AE-83A36624140E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
